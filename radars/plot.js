@@ -1,15 +1,17 @@
 var radar_arcs = [
-    { 'r':65, 'name': 'Desire to work with' },       
-    { 'r':130, 'name': 'Novice' },      
-    { 'r':195, 'name': 'Advanced Begginer' }, 
-    { 'r':260, 'name': 'Competent' }, 
-    { 'r':325, 'name': 'Proficient' }, 
-    { 'r':390, 'name': 'Expert' } 
+    { 'r':65, 'name': 'Expert' },       
+    { 'r':130, 'name': 'Proficient' },      
+    { 'r':195, 'name': 'Competent' }, 
+    { 'r':260, 'name': 'Advanced Begginer' }, 
+    { 'r':325, 'name': 'Novice' }, 
+    { 'r':390, 'name': 'Desire to work with' } 
 ];
 
 var radar_quadrants = [];
 var radar_data = [];
 var quadrant_colors = [ '', '#990000', '#9900CC', '#0066CC', '#CCCC00' ]; 
+var number_of_radius = 6;
+
 
 function len(object) {
     var i = 0;
@@ -31,8 +33,8 @@ for (var quadrant in data) {
             name: item,
             movement: 'c', 
             pc: {
-                r: (Math.abs(4 - data[quadrant][item]) * 100) + ((40 / len(data[quadrant]) * i)) + 40,
-                t: (quad == 1 ? 90 : quad == 2 ? 20 : quad == 3 ? 200 : 280) + ((60 / len(data[quadrant]) * i))
+                r: (Math.abs(number_of_radius - data[quadrant][item]) * 65) + ((30 / len(data[quadrant]) * i)) + 5, 
+                t: (quad == 1 ? 90 : quad == 2 ? 20 : quad == 3 ? 200 : 280) + ((65 / len(data[quadrant]) * i))
             },
             color: quadrant_colors[quad]
         });
